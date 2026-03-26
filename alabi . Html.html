@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ALABI CBT Practice | Ace Your Exams with Smart Simulations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #fbfdff;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* custom scroll padding for fixed header */
+        section, footer {
+            scroll-margin-top: 90px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.25s ease;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #0f2b3d;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.3px;
+        }
+
+        .logo i {
+            background: linear-gradient(135deg, #2c7da0, #1f6392);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #1e2a3e;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover {
+            color: #2c7da0;
+        }
+
+        /* mobile menu btn */
+        .menu-toggle {
+            display: none;
+            font-size: 1.7rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #1e2a3e;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(145deg, #f8fcff 0%, #ecf5fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(52,152,219,0.08) 0%, rgba(52,152,219,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a4d6b, #2c7da0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #334155;
+            max-width: 650px;
+            margin: 0 auto 32px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #2c7da0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.25s;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #1f6392;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(44,125,160,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2c7da0;
+            color: #2c7da0;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #2c7da0;
+            color: white;
+            border-color: #2c7da0;
+        }
+
+        /* section titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-title h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            margin-bottom: 16px;
+        }
+        .section-title p {
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* about */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            color: #0f2b3d;
+        }
+        .about-text p {
+            color: #334155;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+        .about-stats-mini {
+            display: flex;
+            gap: 28px;
+            margin-top: 24px;
+        }
+        .about-stats-mini div {
+            text-align: left;
+        }
+        .about-stats-mini span {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #2c7da0;
+        }
+        .about-icon {
+            background: #eef6fc;
+            padding: 20px;
+            border-radius: 40px;
+            text-align: center;
+        }
+        .about-icon i {
+            font-size: 6rem;
+            color: #2c7da0;
+        }
+
+        /* features */
+        .features {
+            padding: 90px 0;
+            background: #f9fafc;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        .feature-card {
+            background: white;
+            padding: 32px 28px;
+            border-radius: 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(44,125,160,0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(44,125,160,0.3);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            background: linear-gradient(145deg, #2c7da0, #1f6392);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 22px;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            color: #475569;
+        }
+
+        /* stats section */
+        .stats {
+            padding: 85px 0;
+            background: linear-gradient(105deg, #102b3b 0%, #1c4e6c 100%);
+            color: white;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* contact CTA section */
+        .contact-section {
+            padding: 90px 0;
+            background: white;
+        }
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: #f8fafc;
+            border-radius: 48px;
+            padding: 48px 52px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(44,125,160,0.2);
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            color: #0f2b3d;
+        }
+        .contact-info p {
+            margin-bottom: 28px;
+            color: #334155;
+        }
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        .contact-details i {
+            width: 36px;
+            height: 36px;
+            background: #e2edf2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #2c7da0;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #cbd5e1;
+            border-radius: 28px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            background: white;
+            transition: 0.2s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #2c7da0;
+            box-shadow: 0 0 0 3px rgba(44,125,160,0.2);
+        }
+        .contact-form button {
+            background: #2c7da0;
+            border: none;
+            width: auto;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+
+        /* footer */
+        footer {
+            background: #0f212e;
+            color: #eef2f5;
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background: #2c7da0;
+        }
+        .footer-col p, .footer-links a {
+            color: #cbd5e6;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a:hover {
+            color: #5aa9c2;
+        }
+        .social-links {
+            display: flex;
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .social-links a {
+            background: rgba(255,255,255,0.08);
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            background: #2c7da0;
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 880px) {
+            .about-grid, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 0 24px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                background: white;
+                width: 80%;
+                height: calc(100vh - 75px);
+                flex-direction: column;
+                padding: 40px 24px;
+                box-shadow: 5px 0 20px rgba(0,0,0,0.1);
+                transition: 0.3s;
+                gap: 2rem;
+                z-index: 999;
+                border-radius: 0 20px 20px 0;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-container {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .feature-card {
+                padding: 24px 20px;
+            }
+        }
+
+        .btn-small {
+            background: none;
+            padding: 0;
+        }
+        .back2top {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            background: #2c7da0;
+            width: 44px;
+            height: 44px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            z-index: 99;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .back2top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-laptop-code"></i>
+                ALABI CBT Practice
+            </a>
+            <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="btn btn-small" style="background:#2c7da0; color:white; padding:8px 18px; border-radius:40px;">Get Started</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Smart CBT Practice <br> That Boosts Your Score</h1>
+            <p>Real exam simulation, instant performance analytics, and thousands of questions — all in one modern platform. Prepare smarter, pass with confidence.</p>
+            <div class="btn-group">
+                <a href="#features" class="btn"><i class="fas fa-chalkboard-user"></i> Explore Features</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-arrow-right"></i> Start Free Trial</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Why ALABI CBT Practice?</h3>
+                <p>We combine advanced testing engine with learner-centric design. Over <strong>15,000+ students</strong> trust our platform to simulate JAMB, WAEC, POST-UTME, and professional exams. Get detailed feedback, track progress, and master time management.</p>
+                <p>Our AI-driven analytics identify weak areas and recommend personalized study paths — ensuring every minute you spend brings you closer to excellence.</p>
+                <div class="about-stats-mini">
+                    <div><span>98%</span><br>Success rate</div>
+                    <div><span>24/7</span><br>Cloud access</div>
+                </div>
+            </div>
+            <div class="about-icon">
+                <i class="fas fa-chart-line"></i>
+                <p style="margin-top: 16px; font-weight:500;">Real-time progress dashboard</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section (CBT Focus) -->
+<section id="features" class="features">
+    <div class="container">
+        <div class="section-title">
+            <h2>Powerful Features for Exam Mastery</h2>
+            <p>Everything you need to simulate, analyze, and conquer your computer-based tests.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+                <h3>Authentic CBT Simulator</h3>
+                <p>Exact exam interface, on-screen calculator, timer, and navigation — feel the real pressure before exam day.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
+                <h3>Smart Analytics & Reports</h3>
+                <p>Performance heatmaps, topic-wise strength, speed accuracy metrics. Know exactly where to improve.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-database"></i></div>
+                <h3>Huge Question Bank</h3>
+                <p>10,000+ well-curated questions with detailed explanations, past questions, and mock exams across subjects.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Counter Section -->
+<section class="stats" id="statsSection">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 class="counter" data-target="15000">0</h3>
+                <p>Practice Questions</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="98">0</h3>
+                <p>Pass Rate (%)</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="52">0</h3>
+                <p>Expert Tutors</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="124">0</h3>
+                <p>Subjects & Exams</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact + Form Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3><i class="fas fa-headset"></i> Let’s Talk</h3>
+                <p>Have questions? Need personalized training? Reach out to our team and get 7-day free access.</p>
+                <ul class="contact-details">
+                    <li><i class="fas fa-map-marker-alt"></i> Online Platform — Global Access</li>
+                    <li><i class="fas fa-phone-alt"></i> +234 (812) 345 6789</li>
+                    <li><i class="fas fa-envelope"></i> alabiabdulqudus344@gmail.com</li>
+                </ul>
+            </div>
+            <div class="contact-form">
+                <form id="demoForm">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea rows="3" placeholder="Tell us about your exam goals..."></textarea>
+                    <button type="submit" class="btn">Request Demo <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>ALABI CBT Practice</h3>
+                <p>Next-gen e-learning platform that transforms test preparation with realistic simulations and data-driven insights.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Practice Tests</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ALABI CBT Practice — Empowering Future Leaders. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="back2top" id="backToTopBtn">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if(menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        // close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // smooth scroll with offset for fixed header
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === "#") return;
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                e.preventDefault();
+                const offset = 85;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({
+                    top: elementPosition - offset,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if(window.scrollY > 30) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 8px 22px rgba(0,0,0,0.05)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.96)';
+            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.02)';
+        }
+
+        // back to top visibility
+        const backBtn = document.getElementById('backToTopBtn');
+        if(window.scrollY > 500) {
+            backBtn.classList.add('visible');
+        } else {
+            backBtn.classList.remove('visible');
+        }
+    });
+
+    // Back to top button
+    const backBtn = document.getElementById('backToTopBtn');
+    backBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Counter animation with intersection observer
+    const counters = document.querySelectorAll('.counter');
+    let started = false;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting && !started) {
+                started = true;
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        let current = parseInt(counter.innerText) || 0;
+                        const increment = target / 45;
+                        if(current < target) {
+                            let newVal = Math.ceil(current + increment);
+                            if(newVal > target) newVal = target;
+                            if(target === 98) {
+                                counter.innerText = newVal + '%';
+                            } else {
+                                counter.innerText = newVal.toLocaleString();
+                            }
+                            setTimeout(updateCount, 18);
+                        } else {
+                            if(target === 98) counter.innerText = target + '%';
+                            else counter.innerText = target.toLocaleString();
+                        }
+                    };
+                    updateCount();
+                });
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.getElementById('statsSection');
+    if(statsSection) counterObserver.observe(statsSection);
+
+    // simple form alert simulation
+    const contactForm = document.getElementById('demoForm');
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('🎉 Thanks for reaching out! Our team will contact you within 24 hours with free trial access.');
+            contactForm.reset();
+        });
+    }
+
+    // pre-fill initial static counters to avoid flash (optional)
+    counters.forEach(c => {
+        if(c.getAttribute('data-target') === '98') c.innerText = '0%';
+        else c.innerText = '0';
+    });
+</script>
+</body>
+</html>
